@@ -53,10 +53,6 @@ jobs:
       - name: test run ffmepg
         run: |
           ./workspace/bin/ffmpeg -buildconf
-      - name: clean up
-        run: |
-          ./build-ffmpeg --cleanup
-
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -64,6 +60,9 @@ jobs:
           path: |
             ./workspace/bin/ffmpeg
             ./workspace/bin/ffprobe
+      - name: clean up
+        run: |
+          ./build-ffmpeg --cleanup
 
 #  build-docker:
 #    name: build in docker
