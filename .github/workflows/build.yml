@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Remove HomeBrew Libs
-        run: brew uninstall brotli jpeg-xl libvmaf
+        run: brew uninstall --ignore-dependencies brotli jpeg-xl libvmaf
 
       - name: build ffmpeg
         run: |
