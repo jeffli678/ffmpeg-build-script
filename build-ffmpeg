@@ -595,22 +595,22 @@ if $NONFREE_AND_GPL; then
   CONFIGURE_OPTIONS+=("--enable-libvidstab")
 fi
 
-if build "av1" "ae2be80"; then
-  # libaom ae2be80 == v3.1.2
-  download "https://aomedia.googlesource.com/aom/+archive/ae2be8030200925895fa6e98bd274ffdb595cbf6.tar.gz" "av1.tar.gz" "av1"
-  make_dir "$PACKAGES"/aom_build
-  cd "$PACKAGES"/aom_build || exit
-  if $MACOS_M1; then
-    execute cmake -DENABLE_TESTS=0 -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DCMAKE_INSTALL_LIBDIR=lib -DCONFIG_RUNTIME_CPU_DETECT=0 "$PACKAGES"/av1
-  else
-    execute cmake -DENABLE_TESTS=0 -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DCMAKE_INSTALL_LIBDIR=lib "$PACKAGES"/av1
-  fi
-  execute make -j $MJOBS
-  execute make install
-
-  build_done "av1" "ae2be80"
-fi
-CONFIGURE_OPTIONS+=("--enable-libaom")
+#if build "av1" "ae2be80"; then
+#  # libaom ae2be80 == v3.1.2
+#  download "https://aomedia.googlesource.com/aom/+archive/ae2be8030200925895fa6e98bd274ffdb595cbf6.tar.gz" "av1.tar.gz" "av1"
+#  make_dir "$PACKAGES"/aom_build
+#  cd "$PACKAGES"/aom_build || exit
+#  if $MACOS_M1; then
+#    execute cmake -DENABLE_TESTS=0 -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DCMAKE_INSTALL_LIBDIR=lib -DCONFIG_RUNTIME_CPU_DETECT=0 "$PACKAGES"/av1
+#  else
+#    execute cmake -DENABLE_TESTS=0 -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DCMAKE_INSTALL_LIBDIR=lib "$PACKAGES"/av1
+#  fi
+#  execute make -j $MJOBS
+#  execute make install
+#
+#  build_done "av1" "ae2be80"
+#fi
+#CONFIGURE_OPTIONS+=("--enable-libaom")
 
 if build "zimg" "3.0.3"; then
   download "https://github.com/sekrit-twc/zimg/archive/refs/tags/release-3.0.3.tar.gz" "zimg-3.0.3.tar.gz" "zimg"
